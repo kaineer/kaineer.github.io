@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Тег: emacs | Caramel sepulcrum]]></title>
-  <link href="http://kaineer.info/blog/categories/emacs/atom.xml" rel="self"/>
-  <link href="http://kaineer.info/"/>
-  <updated>2015-12-23T14:43:20+05:00</updated>
-  <id>http://kaineer.info/</id>
+  <link href="http://kaineer.github.io/blog/categories/emacs/atom.xml" rel="self"/>
+  <link href="http://kaineer.github.io/"/>
+  <updated>2015-12-23T15:28:53+05:00</updated>
+  <id>http://kaineer.github.io/</id>
   <author>
     <name><![CDATA[Tangerine Cat]]></name>
     <email><![CDATA[kaineer@gmail.com]]></email>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Emacs. Каждый день что-нибудь новое]]></title>
-    <link href="http://kaineer.info/blog/2015/04/07/emacs-bits/"/>
+    <link href="http://kaineer.github.io/blog/2015/04/07/emacs-bits/"/>
     <updated>2015-04-07T10:56:00+05:00</updated>
-    <id>http://kaineer.info/blog/2015/04/07/emacs-bits</id>
+    <id>http://kaineer.github.io/blog/2015/04/07/emacs-bits</id>
     <content type="html"><![CDATA[<p>Сегодняшние герои - <code>projectile</code> и комбинация <code>C-h</code>.</p>
 
 <p>Часто, начиная поиск в <code>projectile</code> при помощи <code>C-c p f</code> мне приходилось натыкаться
@@ -57,9 +57,9 @@
   
   <entry>
     <title type="html"><![CDATA[Почему emacs?]]></title>
-    <link href="http://kaineer.info/blog/2015/03/05/emacsing/"/>
+    <link href="http://kaineer.github.io/blog/2015/03/05/emacsing/"/>
     <updated>2015-03-05T14:36:00+05:00</updated>
-    <id>http://kaineer.info/blog/2015/03/05/emacsing</id>
+    <id>http://kaineer.github.io/blog/2015/03/05/emacsing</id>
     <content type="html"><![CDATA[<p>Не помню, какой по счёту год пользования emacs, полет нормальный.</p>
 
 <p>В какой-то момент, довольно протяженный во времени, уходил на sublime,
