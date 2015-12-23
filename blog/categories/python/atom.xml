@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Тег: python | Caramel sepulcrum]]></title>
+  <link href="http://kaineer.info/blog/categories/python/atom.xml" rel="self"/>
+  <link href="http://kaineer.info/"/>
+  <updated>2015-12-23T14:43:20+05:00</updated>
+  <id>http://kaineer.info/</id>
+  <author>
+    <name><![CDATA[Tangerine Cat]]></name>
+    <email><![CDATA[kaineer@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Зависимости внутри пакета в python]]></title>
+    <link href="http://kaineer.info/blog/2015/05/06/python/"/>
+    <updated>2015-05-06T15:48:00+05:00</updated>
+    <id>http://kaineer.info/blog/2015/05/06/python</id>
+    <content type="html"><![CDATA[<blockquote><p>Что за прелесть эти ваши сказочки..</p></blockquote>
+
+<p>Питон чудо как хорош, когда дело касается скорости исполнения.
+Простые программы из одного-двух классов исполняются, да и пишутся на нём быстро,
+а иногда даже очень быстро.</p>
+
+<p>Но вот как только тебе захочется сделать так, чтобы классы были разложены по файлам,
+и начнёшь подтягивать зависимости из файла в файл при помощи <code>import</code>, можно садиться
+в угол, брать попкорн и расплываться в чеширской, практически сардонической улыбке.</p>
+
+<p>Небольшая пауза, пока я вычищаю из поста все ругательства, которые накопились за
+пять дней &ldquo;знакомства&rdquo; с языком.</p>
+
+<p>Тем не менее, способ справиться с &ldquo;кошмарным ужасом&rdquo; зависимостей есть.</p>
+
+<!-- more -->
+
+
+<p>Первое что надо запомнить:</p>
+
+<p><figure class='code'><figcaption><span>foo.py </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='py'><span class='line'><span class="kn">import</span> <span class="nn">foo.bar</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;&amp;</span><span class="n">hellip</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>Если вы делаете так, готовьтесь к неприятностям. Т.е. циклические зависимости,
+переходящие в невозможность подгрузить какой-нибудь класс.
+Происходит это не только потому, что модуль верхнего уровня может где-нибудь
+понадобиться, сколько потому, что импортируя где-нибудь модуль <code>foo.pee</code>, вы
+автоматически требуете, чтобы питон проимпортировал модуль <code>foo</code>. Проще говоря,
+импортируем зависимости без напряжения - в модулях более нижнего уровня
+из модулей более верхнего:</p>
+
+<p><figure class='code'><figcaption><span>foo/bar.py </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='py'><span class='line'><span class="kn">import</span> <span class="nn">foo</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;&amp;</span><span class="n">hellip</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>и, с осторожностью, чтобы не зациклить импорты, зависимости между модулями
+под модулями <code>foo.bar</code> и <code>foo.baz</code>.</p>
+
+<p>Второе. Если в файле есть две часто используемые сущности, но по смыслу они
+отличаются и довольно заметно, лучше их разнести по разным файлам.
+В этом случае вам не придётся долго думать почему, потянув себе класс конфигурации
+приложения, вы потянули зависимости логгера (например).</p>
+
+<p>В целом же, как я уже и отмечал, скрипты на питоне пишутся быстро, исполняются
+невероятно быстро, но отвратительно отлаживаются, т.ч. желаю вам терпения,
+ну и, возможно, просветления на этом пути.</p>
+
+<p>В следующих сериях (если дойдут руки):</p>
+
+<ul>
+<li>Как и чем тестировать в python</li>
+<li>Как сделать пакет, чтобы поставить на другой машине через pip?</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>

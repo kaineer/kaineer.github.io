@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Тег: text | Caramel sepulcrum]]></title>
+  <link href="http://kaineer.info/blog/categories/text/atom.xml" rel="self"/>
+  <link href="http://kaineer.info/"/>
+  <updated>2015-12-23T14:43:20+05:00</updated>
+  <id>http://kaineer.info/</id>
+  <author>
+    <name><![CDATA[Tangerine Cat]]></name>
+    <email><![CDATA[kaineer@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Кто ты такой]]></title>
+    <link href="http://kaineer.info/blog/2013/11/27/who-are-you/"/>
+    <updated>2013-11-27T17:56:00+06:00</updated>
+    <id>http://kaineer.info/blog/2013/11/27/who-are-you</id>
+    <content type="html"><![CDATA[<p>Кто ты такой, чтобы указывать мне, учить меня, исследовать меня, игнорировать меня?
+Кто я такой, я сам, чтобы задавать вопросы и беспокоить кого бы то ни было?
+Кто мы, кем мы будем, когда смысл вопросов перестанет быть смыслом?</p>
+
+<p>В чём печаль? В том, что время, отпущенное нам, конечно.
+Чему же тогда радоваться?</p>
+
+<p>Радоваться стоит тому, что отпущенное нам время закончилось не вчера.
+Оно закончилось не пять минут назад, не только что.
+И это, само по себе, уже кое-что.</p>
+]]></content>
+  </entry>
+  
+</feed>

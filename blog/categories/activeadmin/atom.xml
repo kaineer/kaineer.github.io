@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Тег: activeadmin | Caramel sepulcrum]]></title>
+  <link href="http://kaineer.info/blog/categories/activeadmin/atom.xml" rel="self"/>
+  <link href="http://kaineer.info/"/>
+  <updated>2015-12-23T14:43:20+05:00</updated>
+  <id>http://kaineer.info/</id>
+  <author>
+    <name><![CDATA[Tangerine Cat]]></name>
+    <email><![CDATA[kaineer@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[ActiveAdmin 0.5 и почему меня должна волновать новая версия]]></title>
+    <link href="http://kaineer.info/blog/2012/09/04/activeadmin-0-dot-5/"/>
+    <updated>2012-09-04T14:45:00+06:00</updated>
+    <id>http://kaineer.info/blog/2012/09/04/activeadmin-0-dot-5</id>
+    <content type="html"><![CDATA[<p>Всё портится, даже в том случае, если что-то становится лучше.
+Вот, например, <a href="http://activeadmin.info/documentation.html">ActiveAdmin</a> - удобная штука для тех, кому лень писать собственную админку.
+И правильно, не <s>царское</s> для разработчиков это дело.
+Но иногда приходится.
+И вот вдруг, когда dashboard в админке давно написан и забыт,
+приходит <a href="http://reverbhq.com/blog/2012/08/activeadmin-0-5-0-is-released/">обновление</a>,
+которое, в частности, гнусно намекает, что в следующем обновлении dashboard
+вообще будут исключены и приложение, что? &ndash; правильно, запускаться не будет вообще.</p>
+
+<!--more-->
+
+
+<p>&ldquo;Кот в панике&rdquo;. Но решение &ndash; есть. Например, <a href="http://blog.tech-angels.com/post/29129191052/using-activeadmin-master-branch">тут</a> рассказано, что содержимое <code>app/admin/dashboards.rb</code> можно заменить на:</p>
+
+<p><figure class='code'><figcaption><span>Page вместо Dashboard - dashboards.rb </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='rb'><span class='line'><span class="no">ActiveAdmin</span><span class="o">.</span><span class="n">register_page</span> <span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="no">Dashboard</span><span class="o">&amp;</span><span class="n">rdquo</span><span class="p">;</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">controller</span><span class="o">.</span><span class="n">skip_before_filter</span> <span class="ss">:authenticate</span><span class="p">,</span> <span class="ss">:only</span> <span class="o">=&gt;</span> <span class="ss">:index</span><span class="o">&lt;</span><span class="sr">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="sr">&lt;p&gt;  menu :priority =&gt; 1, :label =&gt; proc{ I18n.t(&amp;ldquo;active_admin.dashboard&amp;rdquo;) }&lt;/</span><span class="nb">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>  <span class="n">content</span> <span class="ss">:title</span> <span class="o">=&gt;</span> <span class="nb">proc</span><span class="p">{</span> <span class="no">I18n</span><span class="o">.</span><span class="n">t</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="n">active_admin</span><span class="o">.</span><span class="n">dashboard</span><span class="o">&amp;</span><span class="n">rdquo</span><span class="p">;)</span> <span class="p">}</span> <span class="k">do</span>
+</span><span class='line'>    <span class="c1"># Тут содержимое страницы</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>Почти что &ldquo;ура&rdquo;. Плохо только то, что старое содержимое
+стало отрисовываться без стилей, без заголовков и т.п.</p>
+
+<p>Код для отрисовки таблиц берём <a href="http://blog.agile-pandas.com/2011/07/06/activeadmin-beyond-the-basics">отсюда</a>. Он может выглядеть, например, так:</p>
+
+<p><figure class='code'><figcaption><span>Оформляем dashboards.rb </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class='rb'><span class='line'><span class="o">&lt;</span><span class="sr">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="sr">&lt;h1&gt;&amp;hellip;&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>   <span class="n">panel</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="err">Название</span> <span class="err">панели</span><span class="o">&amp;</span><span class="n">rdquo</span><span class="p">;)</span> <span class="k">do</span>
+</span><span class='line'>     <span class="n">table_for</span><span class="p">(</span><span class="no">ModelName</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span> <span class="k">do</span>
+</span><span class='line'>       <span class="n">column</span> <span class="ss">:email</span>
+</span><span class='line'>       <span class="n">column</span> <span class="ss">:created_at</span>
+</span><span class='line'>       <span class="c1"># Здесь делаем всё то же, что привыкли использовать</span>
+</span><span class='line'>       <span class="c1">#   на странице списка для моделей</span>
+</span><span class='line'>     <span class="k">end</span><span class="o">&lt;</span><span class="sr">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="sr">&lt;pre&gt;&lt;code&gt; # ...</span>
+</span><span class='line'><span class="sr">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;</span><span class="sr">/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="sr">&lt;p&gt;   end&lt;/</span><span class="nb">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;&amp;</span><span class="n">hellip</span><span class="p">;</span><span class="o">&lt;</span><span class="sr">/h1&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="sr">&lt;p&gt;</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>Вот, вроде, и всё. Будем ждать новых релизов ActiveAdmin :)</p>
+
+<h2>Список используемой литературы</h2>
+
+<ul>
+<li><a href="http://activeadmin.info/documentation.html">Active Admin | Documentation</a></li>
+<li><a href="http://reverbhq.com/blog/2012/08/activeadmin-0-5-0-is-released/">Active Admin 0.5.0 has been released!</a></li>
+<li><a href="http://blog.agile-pandas.com/2011/07/06/activeadmin-beyond-the-basics">ActiveAdmin: Beyond the basics - The Agile Panda Blog</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>
