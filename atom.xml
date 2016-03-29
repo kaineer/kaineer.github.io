@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Caramel sepulcrum]]></title>
-  <link href="http://kaineer.github.io/atom.xml" rel="self"/>
-  <link href="http://kaineer.github.io/"/>
-  <updated>2015-12-23T15:36:17+05:00</updated>
-  <id>http://kaineer.github.io/</id>
+  <link href="http://kaineer.info/atom.xml" rel="self"/>
+  <link href="http://kaineer.info/"/>
+  <updated>2016-03-29T21:15:47+05:00</updated>
+  <id>http://kaineer.info/</id>
   <author>
     <name><![CDATA[Tangerine Cat]]></name>
     <email><![CDATA[kaineer@gmail.com]]></email>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Зависимости внутри пакета в python]]></title>
-    <link href="http://kaineer.github.io/blog/2015/05/06/python/"/>
+    <link href="http://kaineer.info/blog/2015/05/06/python/"/>
     <updated>2015-05-06T15:48:00+05:00</updated>
-    <id>http://kaineer.github.io/blog/2015/05/06/python</id>
+    <id>http://kaineer.info/blog/2015/05/06/python</id>
     <content type="html"><![CDATA[<blockquote><p>Что за прелесть эти ваши сказочки..</p></blockquote>
 
 <p>Питон чудо как хорош, когда дело касается скорости исполнения.
@@ -90,9 +90,9 @@
   
   <entry>
     <title type="html"><![CDATA[Алиасы для localhost]]></title>
-    <link href="http://kaineer.github.io/blog/2015/04/09/localhost-aliases/"/>
+    <link href="http://kaineer.info/blog/2015/04/09/localhost-aliases/"/>
     <updated>2015-04-09T11:47:22+05:00</updated>
-    <id>http://kaineer.github.io/blog/2015/04/09/localhost-aliases</id>
+    <id>http://kaineer.info/blog/2015/04/09/localhost-aliases</id>
     <content type="html"><![CDATA[<p>Давно хотелось делать для работы в проектах на своем компе
 алиасы вида <code>project1.local</code>. Казалось бы, уж чего проще,
 поставил <code>nginx</code>, отредактировал пару файлов и - вперед!</p>
@@ -140,9 +140,9 @@
   
   <entry>
     <title type="html"><![CDATA[Emacs. Каждый день что-нибудь новое]]></title>
-    <link href="http://kaineer.github.io/blog/2015/04/07/emacs-bits/"/>
+    <link href="http://kaineer.info/blog/2015/04/07/emacs-bits/"/>
     <updated>2015-04-07T10:56:00+05:00</updated>
-    <id>http://kaineer.github.io/blog/2015/04/07/emacs-bits</id>
+    <id>http://kaineer.info/blog/2015/04/07/emacs-bits</id>
     <content type="html"><![CDATA[<p>Сегодняшние герои - <code>projectile</code> и комбинация <code>C-h</code>.</p>
 
 <p>Часто, начиная поиск в <code>projectile</code> при помощи <code>C-c p f</code> мне приходилось натыкаться
@@ -183,9 +183,9 @@
   
   <entry>
     <title type="html"><![CDATA[Почему emacs?]]></title>
-    <link href="http://kaineer.github.io/blog/2015/03/05/emacsing/"/>
+    <link href="http://kaineer.info/blog/2015/03/05/emacsing/"/>
     <updated>2015-03-05T14:36:00+05:00</updated>
-    <id>http://kaineer.github.io/blog/2015/03/05/emacsing</id>
+    <id>http://kaineer.info/blog/2015/03/05/emacsing</id>
     <content type="html"><![CDATA[<p>Не помню, какой по счёту год пользования emacs, полет нормальный.</p>
 
 <p>В какой-то момент, довольно протяженный во времени, уходил на sublime,
@@ -213,9 +213,9 @@
   
   <entry>
     <title type="html"><![CDATA[Кто ты такой]]></title>
-    <link href="http://kaineer.github.io/blog/2013/11/27/who-are-you/"/>
+    <link href="http://kaineer.info/blog/2013/11/27/who-are-you/"/>
     <updated>2013-11-27T17:56:00+06:00</updated>
-    <id>http://kaineer.github.io/blog/2013/11/27/who-are-you</id>
+    <id>http://kaineer.info/blog/2013/11/27/who-are-you</id>
     <content type="html"><![CDATA[<p>Кто ты такой, чтобы указывать мне, учить меня, исследовать меня, игнорировать меня?
 Кто я такой, я сам, чтобы задавать вопросы и беспокоить кого бы то ни было?
 Кто мы, кем мы будем, когда смысл вопросов перестанет быть смыслом?</p>
@@ -231,9 +231,9 @@
   
   <entry>
     <title type="html"><![CDATA[Почему bluepill не мониторит мою задачу?]]></title>
-    <link href="http://kaineer.github.io/blog/2013/09/26/daemonize-with-bluepill/"/>
+    <link href="http://kaineer.info/blog/2013/09/26/daemonize-with-bluepill/"/>
     <updated>2013-09-26T13:09:00+06:00</updated>
-    <id>http://kaineer.github.io/blog/2013/09/26/daemonize-with-bluepill</id>
+    <id>http://kaineer.info/blog/2013/09/26/daemonize-with-bluepill</id>
     <content type="html"><![CDATA[<p>Случается <s>страшное</s> неприятное: падает процесс, поддерживающий работоспособность
 вашего приложения и перестаёт ходить почта, обновляться данные и много чего ещё.
 Узнаёте вы об этом из вопросов ваших пользователей, большая часть которых сводится
@@ -270,9 +270,9 @@
   
   <entry>
     <title type="html"><![CDATA[Минутка ненависти]]></title>
-    <link href="http://kaineer.github.io/blog/2013/01/25/rage-minute/"/>
+    <link href="http://kaineer.info/blog/2013/01/25/rage-minute/"/>
     <updated>2013-01-25T18:43:00+06:00</updated>
-    <id>http://kaineer.github.io/blog/2013/01/25/rage-minute</id>
+    <id>http://kaineer.info/blog/2013/01/25/rage-minute</id>
     <content type="html"><![CDATA[<p>Внезапно обнаружил, что точка входа в ruby-объект может находиться в <s>жо</s> не совсем
 подходящем месте, а именно, в <code>private</code> секции:</p>
 
@@ -304,9 +304,9 @@
   
   <entry>
     <title type="html"><![CDATA[Линки и открытия прошлой недели]]></title>
-    <link href="http://kaineer.github.io/blog/2012/09/13/last-week/"/>
+    <link href="http://kaineer.info/blog/2012/09/13/last-week/"/>
     <updated>2012-09-13T15:51:00+06:00</updated>
-    <id>http://kaineer.github.io/blog/2012/09/13/last-week</id>
+    <id>http://kaineer.info/blog/2012/09/13/last-week</id>
     <content type="html"><![CDATA[<h3>ActiveAdmin 0.5.0</h3>
 
 <p><a href="http://reverbhq.com/blog/2012/08/activeadmin-0-5-0-is-released/">Обновление</a>, которое пока что можно игнорировать.
@@ -342,9 +342,9 @@ gem-е заметно отличается от содержимого репо�
   
   <entry>
     <title type="html"><![CDATA[ActiveAdmin 0.5 и почему меня должна волновать новая версия]]></title>
-    <link href="http://kaineer.github.io/blog/2012/09/04/activeadmin-0-dot-5/"/>
+    <link href="http://kaineer.info/blog/2012/09/04/activeadmin-0-dot-5/"/>
     <updated>2012-09-04T14:45:00+06:00</updated>
-    <id>http://kaineer.github.io/blog/2012/09/04/activeadmin-0-dot-5</id>
+    <id>http://kaineer.info/blog/2012/09/04/activeadmin-0-dot-5</id>
     <content type="html"><![CDATA[<p>Всё портится, даже в том случае, если что-то становится лучше.
 Вот, например, <a href="http://activeadmin.info/documentation.html">ActiveAdmin</a> - удобная штука для тех, кому лень писать собственную админку.
 И правильно, не <s>царское</s> для разработчиков это дело.
@@ -429,9 +429,9 @@ gem-е заметно отличается от содержимого репо�
   
   <entry>
     <title type="html"><![CDATA[Caller &amp; Pry]]></title>
-    <link href="http://kaineer.github.io/blog/2011/12/12/caller-and-pry/"/>
+    <link href="http://kaineer.info/blog/2011/12/12/caller-and-pry/"/>
     <updated>2011-12-12T14:09:00+06:00</updated>
-    <id>http://kaineer.github.io/blog/2011/12/12/caller-and-pry</id>
+    <id>http://kaineer.info/blog/2011/12/12/caller-and-pry</id>
     <content type="html"><![CDATA[<p>Когда у меня отказывают мозги, я берусь за отладчик.
 Если бы не необходимость писать код, я бы из него не вылезал вообще.
 И отсутствие толкового отладчика в Ruby меня до сих пор очень расстраивает.</p>
@@ -485,9 +485,9 @@ gem-е заметно отличается от содержимого репо�
   
   <entry>
     <title type="html"><![CDATA[Папа, настрой nginx]]></title>
-    <link href="http://kaineer.github.io/blog/2011/09/08/makeanginx/"/>
+    <link href="http://kaineer.info/blog/2011/09/08/makeanginx/"/>
     <updated>2011-09-08T10:36:00+06:00</updated>
-    <id>http://kaineer.github.io/blog/2011/09/08/makeanginx</id>
+    <id>http://kaineer.info/blog/2011/09/08/makeanginx</id>
     <content type="html"><![CDATA[<p>Есть задача, даже две. Первая - разобраться с настройкой nginx для отдачи rails-статики
 и балансировки двух (трёх, сколько нужно), mongrel-ов. Вторая - всё то же самое, но без mongrel,
 а с использованием passenger и, главное, через capistrano.</p>
@@ -817,9 +817,9 @@ nginx уже на работу с /home/user_name/deploy_path/public.</p>
   
   <entry>
     <title type="html"><![CDATA[Пилим linkify tweet]]></title>
-    <link href="http://kaineer.github.io/blog/2011/08/09/pilim_linkify/"/>
+    <link href="http://kaineer.info/blog/2011/08/09/pilim_linkify/"/>
     <updated>2011-08-09T10:02:00+06:00</updated>
-    <id>http://kaineer.github.io/blog/2011/08/09/pilim_linkify</id>
+    <id>http://kaineer.info/blog/2011/08/09/pilim_linkify</id>
     <content type="html"><![CDATA[<p>Допилил октопрессовский <code>twitter.js</code>, теперь в импортированных твитах
 выделяются тэги с кириллицей.</p>
 
@@ -864,9 +864,9 @@ nginx уже на работу с /home/user_name/deploy_path/public.</p>
   
   <entry>
     <title type="html"><![CDATA[Оно работает! Но, блин, как..]]></title>
-    <link href="http://kaineer.github.io/blog/2011/08/08/"/>
+    <link href="http://kaineer.info/blog/2011/08/08/"/>
     <updated>2011-08-08T16:52:00+06:00</updated>
-    <id>http://kaineer.github.io/blog/2011/08/</id>
+    <id>http://kaineer.info/blog/2011/08/</id>
     <content type="html"><![CDATA[<p>На днях исправлял чудесный, феерический баг в коде, уже успевшем стать древним (просто потому, что мой склероз прогрессирует заметно быстрее,
 чем я пишу код). Вкратце, берётся инпут, обвешивается несколькими способами обработчиками, после чего в инпут вводится значение и..
 и обработчики не работают!</p>

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Тег: text | Caramel sepulcrum]]></title>
-  <link href="http://kaineer.github.io/blog/categories/text/atom.xml" rel="self"/>
-  <link href="http://kaineer.github.io/"/>
-  <updated>2015-12-23T15:36:17+05:00</updated>
-  <id>http://kaineer.github.io/</id>
+  <link href="http://kaineer.info/blog/categories/text/atom.xml" rel="self"/>
+  <link href="http://kaineer.info/"/>
+  <updated>2016-03-29T21:15:47+05:00</updated>
+  <id>http://kaineer.info/</id>
   <author>
     <name><![CDATA[Tangerine Cat]]></name>
     <email><![CDATA[kaineer@gmail.com]]></email>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Кто ты такой]]></title>
-    <link href="http://kaineer.github.io/blog/2013/11/27/who-are-you/"/>
+    <link href="http://kaineer.info/blog/2013/11/27/who-are-you/"/>
     <updated>2013-11-27T17:56:00+06:00</updated>
-    <id>http://kaineer.github.io/blog/2013/11/27/who-are-you</id>
+    <id>http://kaineer.info/blog/2013/11/27/who-are-you</id>
     <content type="html"><![CDATA[<p>Кто ты такой, чтобы указывать мне, учить меня, исследовать меня, игнорировать меня?
 Кто я такой, я сам, чтобы задавать вопросы и беспокоить кого бы то ни было?
 Кто мы, кем мы будем, когда смысл вопросов перестанет быть смыслом?</p>

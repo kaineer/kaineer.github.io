@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Тег: nginx | Caramel sepulcrum]]></title>
-  <link href="http://kaineer.github.io/blog/categories/nginx/atom.xml" rel="self"/>
-  <link href="http://kaineer.github.io/"/>
-  <updated>2015-12-23T15:36:17+05:00</updated>
-  <id>http://kaineer.github.io/</id>
+  <link href="http://kaineer.info/blog/categories/nginx/atom.xml" rel="self"/>
+  <link href="http://kaineer.info/"/>
+  <updated>2016-03-29T21:15:47+05:00</updated>
+  <id>http://kaineer.info/</id>
   <author>
     <name><![CDATA[Tangerine Cat]]></name>
     <email><![CDATA[kaineer@gmail.com]]></email>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Алиасы для localhost]]></title>
-    <link href="http://kaineer.github.io/blog/2015/04/09/localhost-aliases/"/>
+    <link href="http://kaineer.info/blog/2015/04/09/localhost-aliases/"/>
     <updated>2015-04-09T11:47:22+05:00</updated>
-    <id>http://kaineer.github.io/blog/2015/04/09/localhost-aliases</id>
+    <id>http://kaineer.info/blog/2015/04/09/localhost-aliases</id>
     <content type="html"><![CDATA[<p>Давно хотелось делать для работы в проектах на своем компе
 алиасы вида <code>project1.local</code>. Казалось бы, уж чего проще,
 поставил <code>nginx</code>, отредактировал пару файлов и - вперед!</p>
@@ -79,9 +79,9 @@
   
   <entry>
     <title type="html"><![CDATA[Папа, настрой nginx]]></title>
-    <link href="http://kaineer.github.io/blog/2011/09/08/makeanginx/"/>
+    <link href="http://kaineer.info/blog/2011/09/08/makeanginx/"/>
     <updated>2011-09-08T10:36:00+06:00</updated>
-    <id>http://kaineer.github.io/blog/2011/09/08/makeanginx</id>
+    <id>http://kaineer.info/blog/2011/09/08/makeanginx</id>
     <content type="html"><![CDATA[<p>Есть задача, даже две. Первая - разобраться с настройкой nginx для отдачи rails-статики
 и балансировки двух (трёх, сколько нужно), mongrel-ов. Вторая - всё то же самое, но без mongrel,
 а с использованием passenger и, главное, через capistrano.</p>
