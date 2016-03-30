@@ -1,0 +1,399 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>ActiveAdmin 0.5 и почему меня должна волновать новая версия - Caramel sepulcrum</title>
+  <meta name="author" content="Tangerine Cat">
+
+  
+  <meta name="description" content="Всё портится, даже в том случае, если что-то становится лучше.
+Вот, например, ActiveAdmin - удобная штука для тех, кому лень писать собственную &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://kaineer.info/blog/2012/09/04/activeadmin-0-dot-5/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+   <link href="/stylesheets/data-table.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Caramel sepulcrum" type="application/atom+xml">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+
+<!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<!-- PT Fonts -->
+<link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=PT+Serif:700' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=PT+Mono' rel='stylesheet' type='text/css'>
+
+
+
+  
+
+  <style>html{background: url(/images/stripes-background.png) repeat;}</style>
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+</hgroup>
+
+</header>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">ActiveAdmin 0.5 и почему меня должна волновать новая версия</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2012-09-04T14:45:00+06:00'><span class='date'>04 сен 2012</span> <span class='time'>2:45 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Всё портится, даже в том случае, если что-то становится лучше.
+Вот, например, <a href="http://activeadmin.info/documentation.html">ActiveAdmin</a> - удобная штука для тех, кому лень писать собственную админку.
+И правильно, не <s>царское</s> для разработчиков это дело.
+Но иногда приходится.
+И вот вдруг, когда dashboard в админке давно написан и забыт,
+приходит <a href="http://reverbhq.com/blog/2012/08/activeadmin-0-5-0-is-released/">обновление</a>,
+которое, в частности, гнусно намекает, что в следующем обновлении dashboard
+вообще будут исключены и приложение, что? &ndash; правильно, запускаться не будет вообще.</p>
+
+<!--more-->
+
+
+<p>&ldquo;Кот в панике&rdquo;. Но решение &ndash; есть. Например, <a href="http://blog.tech-angels.com/post/29129191052/using-activeadmin-master-branch">тут</a> рассказано, что содержимое <code>app/admin/dashboards.rb</code> можно заменить на:</p>
+
+<figure class='code'><figcaption><span>Page вместо Dashboard - dashboards.rb </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='rb'><span class='line'><span class="no">ActiveAdmin</span><span class="o">.</span><span class="n">register_page</span> <span class="s2">&quot;Dashboard&quot;</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">controller</span><span class="o">.</span><span class="n">skip_before_filter</span> <span class="ss">:authenticate</span><span class="p">,</span> <span class="ss">:only</span> <span class="o">=&gt;</span> <span class="ss">:index</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">menu</span> <span class="ss">:priority</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span> <span class="ss">:label</span> <span class="o">=&gt;</span> <span class="nb">proc</span><span class="p">{</span> <span class="no">I18n</span><span class="o">.</span><span class="n">t</span><span class="p">(</span><span class="s2">&quot;active_admin.dashboard&quot;</span><span class="p">)</span> <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">content</span> <span class="ss">:title</span> <span class="o">=&gt;</span> <span class="nb">proc</span><span class="p">{</span> <span class="no">I18n</span><span class="o">.</span><span class="n">t</span><span class="p">(</span><span class="s2">&quot;active_admin.dashboard&quot;</span><span class="p">)</span> <span class="p">}</span> <span class="k">do</span>
+</span><span class='line'>    <span class="c1"># Тут содержимое страницы</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Почти что &ldquo;ура&rdquo;. Плохо только то, что старое содержимое
+стало отрисовываться без стилей, без заголовков и т.п.</p>
+
+<p>Код для отрисовки таблиц берём <a href="http://blog.agile-pandas.com/2011/07/06/activeadmin-beyond-the-basics">отсюда</a>. Он может выглядеть, например, так:</p>
+
+<figure class='code'><figcaption><span>Оформляем dashboards.rb </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='rb'><span class='line'><span class="c1"># ...</span>
+</span><span class='line'>   <span class="n">panel</span><span class="p">(</span><span class="s2">&quot;Название панели&quot;</span><span class="p">)</span> <span class="k">do</span>
+</span><span class='line'>     <span class="n">table_for</span><span class="p">(</span><span class="no">ModelName</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span> <span class="k">do</span>
+</span><span class='line'>       <span class="n">column</span> <span class="ss">:email</span>
+</span><span class='line'>       <span class="n">column</span> <span class="ss">:created_at</span>
+</span><span class='line'>       <span class="c1"># Здесь делаем всё то же, что привыкли использовать</span>
+</span><span class='line'>       <span class="c1">#   на странице списка для моделей</span>
+</span><span class='line'>     <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>     <span class="c1"># ...</span>
+</span><span class='line'>   <span class="k">end</span>
+</span><span class='line'><span class="c1"># ...</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Вот, вроде, и всё. Будем ждать новых релизов ActiveAdmin :)</p>
+
+<h2>Список используемой литературы</h2>
+
+<ul>
+<li><a href="http://activeadmin.info/documentation.html">Active Admin | Documentation</a></li>
+<li><a href="http://reverbhq.com/blog/2012/08/activeadmin-0-5-0-is-released/">Active Admin 0.5.0 has been released!</a></li>
+<li><a href="http://blog.agile-pandas.com/2011/07/06/activeadmin-beyond-the-basics">ActiveAdmin: Beyond the basics - The Agile Panda Blog</a></li>
+</ul>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard"><span class="fn">Tangerine Cat</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2012-09-04T14:45:00+06:00'><span class='date'>04 сен 2012</span> <span class='time'>2:45 pm</span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/activeadmin/'>activeadmin</a>, <a class='category' href='/blog/categories/rails/'>rails</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://kaineer.info/blog/2012/09/04/activeadmin-0-dot-5/" data-via="kaineer" data-counturl="http://kaineer.info/blog/2012/09/04/activeadmin-0-dot-5/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2011/12/12/caller-and-pry/" title="Previous Post: Caller &amp; Pry">&laquo; Caller &amp; Pry</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2012/09/13/last-week/" title="Next Post: Линки и открытия прошлой недели">Линки и открытия прошлой недели &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <ul id="recent_posts">
+    <li class="post">
+      <a href="http://kaineer.info" alt="Home"><img src="/images/house.png"></a>
+      <a href="http://kaineer.info/blog/archives/" alt="Archives"><img src="/images/calendar.png"></a>
+      <a href="mailto:me@kaineer.info" alt="E-Mail"><img src="/images/email_32.png"></a>
+    </li>
+  </ul>
+</section>
+<section>
+  <h1>Tangerine Cat</h1>
+  <img class="portrait" src="/images/meh.jpg" alt="" />
+</section>
+<section><h1>My gems</h1><ul><li><a href='http://rubygems.org/gems/yamlt'>yamlt</a>&nbsp;<img class='gem-version' src='http://badge.fury.io/rb/yamlt.png' alt='Gem version' /></li><li><a href='http://github.com/kaineer/jabber_delivery'>jabber_delivery</a>&nbsp;<img class='gem-version' src='http://badge.fury.io/rb/jabber_delivery.png' alt='Gem version' /></li><li><a href='https://github.com/kaineer/fresh-jquery'>fresh-jquery</a>&nbsp;<img class='gem-version' src='http://badge.fury.io/rb/fresh-jquery.png' alt='Gem version' /></li></ul></section>
+
+<section>
+  <h1>Coderwall</h1>
+  <ul id="cw_badges">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+
+  <script type="text/javascript">
+    var coderwall = (function(){
+      function render(options, badges){
+        var fragment = '',
+            t = $(options.target)[0],
+            height = 65,
+            width = 65,
+            index;
+
+        for (index in badges) {
+          fragment += '<a class="cw_badge"title="' + badges[index].description + '" href="http://coderwall.com/' + options.user + '">';
+          fragment +=   '<img alt="' + badges[index].description + '" height="' + width + '" width="' + height + '" src="' + badges[index].badge + '"/>';
+          fragment += '</a>';
+        }
+
+        t.innerHTML = fragment;
+      }
+      return {
+        showBadges: function(options){
+          $.ajax({
+              url: 'http://coderwall.com/' + options.user + '.json?callback=?'
+            , type: 'jsonp'
+            , error: function (err) { $(options.target + ' li.loading').addClass('error').text("Error loading feed"); }
+            , success: function(res) {
+                render(options, res.data.badges);
+            }
+          });
+        }
+      };
+    })();
+
+    $.domReady(function(){
+      if (!window.jXHR){
+        var jxhr = document.createElement('script');
+        jxhr.type = 'text/javascript';
+        jxhr.src = '/javascripts/libs/jXHR.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(jxhr, s);
+      }
+      if (!window.$){
+        var b = document.createElement('script');
+        b.type = 'text/javascript';
+        b.src = '/javascripts/ender.js';
+        var sc = document.getElementsByTagName('script')[0];
+        sc.parentNode.insertBefore(jxhr, s);
+      }
+      coderwall.showBadges({
+        user: 'kaineer',
+        target: '#cw_badges'
+      });
+    });
+  </script>
+  <style type="text/css">
+    .cw_badge img {
+      padding: 5px;
+      border: 0 none !important;
+      -moz-box-shadow: none !important;
+      -webkit-box-shadow: none !important;
+      -o-box-shadow: none !important;
+      box-shadow: none !important;
+    }
+  </style>
+
+  
+</section>
+
+<section id="social">
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2016/03/30/hellogithubpages/">Привет Github pages</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/05/06/python/">Зависимости внутри пакета в python</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/04/09/localhost-aliases/">Алиасы для localhost</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/04/07/emacs-bits/">Emacs. Каждый день что-нибудь новое</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/03/05/emacsing/">Почему emacs?</a>
+      </li>
+    
+  </ul>
+</section>
+<a class="twitter-timeline" href="https://twitter.com/kaineer" data-widget-id="309176910884249600">Твиттер..</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2016 - Tangerine Cat -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'kaineer';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://kaineer.info/blog/2012/09/04/activeadmin-0-dot-5/';
+        var disqus_url = 'http://kaineer.info/blog/2012/09/04/activeadmin-0-dot-5/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
