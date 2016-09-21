@@ -9,9 +9,9 @@
   <meta name="author" content="Tangerine Cat">
 
   
-  <meta name="description" content="Переехал на github.io, стало более дешевле,
-стало более веселее. Соответственно, плата вносится только за домен,
-а дополнительным бонусом &ndash; &hellip;">
+  <meta name="description" content="В процессе написания библиотеки, которая должна была упрятать
+в себя проверки свойств различных DOM-узлов html-дерева
+внутрь простенького DSL (три &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -52,6 +52,97 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2016/09/21/phantomjs/">Phantomjs и бандлы</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-09-21T11:33:47+05:00'><span class='date'>21 сен 2016</span> <span class='time'>11:33 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>В процессе написания <a href="https://github.com/kaineer/dom-check">библиотеки</a>, которая должна была упрятать
+в себя проверки свойств различных DOM-узлов html-дерева
+внутрь простенького DSL (три аббревиатуры на одно предложение, ого..),
+выяснил, а, вернее, вспомнил, что <code>phantomjs</code> принципиально не поддерживает
+<code>Object.assign</code>, например.</p>
+
+<p>И код, который в броузере выполняется без вопросов, например такой:</p>
+
+<figure class='code'><figcaption><span>Такой код phantom использовать отказывается - dom-check&#8211;wrong.js </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">var</span> <span class="nx">DomChecker</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="cm">/* ... */</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="c1">// ...</span>
+</span><span class='line'><span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'><span class="nb">Object</span><span class="p">.</span><span class="nx">assign</span><span class="p">(</span><span class="nx">DomChecker</span><span class="p">.</span><span class="nx">prototype</span><span class="p">,</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">textIsEqual</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="c1">// ...</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>не будет выполняться в phantomjs, если втянуть его, например,
+<code>webpack</code>-ом в какой-нибудь бандл. Более того, с момента,
+когда мы попытаемся использовать <code>Object.assign()</code> весь дальнейший
+код выполнен не будет.</p>
+
+<p>Приходится возвращаться к дедовским методам:</p>
+
+<figure class='code'><figcaption><span>А так вполне себе - dom-check&#8211;right.js </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">var</span> <span class="nx">DomChecker</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="cm">/* ... */</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="c1">// ...</span>
+</span><span class='line'><span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">var</span> <span class="nx">cp</span> <span class="o">=</span> <span class="nx">DomChecker</span><span class="p">.</span><span class="nx">prototype</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">cp</span><span class="p">.</span><span class="nx">textIsEqual</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="c1">// ...</span>
+</span><span class='line'><span class="p">};</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Минусы - чуть больше кода. Плюсы - код (ура!) работает даже в бандле,
+который будет скормлен <code>phantomjs</code>.</p>
+
+<p>Или уже создать (или использовать?) <code>phantom-shims</code>?</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -266,56 +357,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/03/05/emacsing/">Почему Emacs?</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-03-05T14:36:00+05:00'><span class='date'>05 мар 2015</span> <span class='time'>2:36 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Не помню, какой по счёту год пользования emacs, полет нормальный.</p>
-
-<p>В какой-то момент, довольно протяженный во времени, уходил на sublime,
-привлеченный магией, которую давал поиск по <code>C-p</code> - действительно,
-потрясающая штуковина, которая в emacs до сих пор не реализована (или просто
-я об этом не слышал).</p>
-
-<p>Чем на данный момент emacs привлекает меня больше, чем sublime?</p>
-
-<ul>
-<li>Melpa - да, пакетный менеджер есть и в sublime, но когда я узнал,
-что он есть в emacs, это сильно сместило баланс
-(до этого приходилось каждый пакет скачивать и размещать ручками)</li>
-<li>Projectile (поиск файла в проекте, в т.ч. fuzzy)</li>
-<li>Perspective (больше не нужно держать открытыми несколько emacs-ов одновременно)</li>
-<li>imenu - поиск метода в текущем файле,
-отвратительно ведёт себя в javascript, но хорош в coffeescript и ruby</li>
-<li>Работа с системами контроля версий. Не всегда прямая и приятная,
-но в sublime она тоже не идеальна</li>
-<li>Отсутствие напоминашек. Да, мне жалко 60 баксов на sublime.</li>
-</ul>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/2">« Раньше</a>
@@ -431,6 +472,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2016/09/21/phantomjs/">Phantomjs и бандлы</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2016/03/30/hellogithubpages/">Привет, Github pages</a>
       </li>
     
@@ -444,10 +489,6 @@
     
       <li class="post">
         <a href="/blog/2015/04/07/emacs-bits/">Emacs. Каждый день что-нибудь новое</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/03/05/emacsing/">Почему emacs?</a>
       </li>
     
   </ul>
