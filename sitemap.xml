@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://kaineer.info/blog/2016/09/29/opacity-transition/</loc>
+    <lastmod>2016-09-29T09:31:00+05:00</lastmod>
+  </url>
+  <url>
     <loc>http://kaineer.info/blog/2016/09/21/phantomjs/</loc>
     <lastmod>2016-09-21T11:33:47+05:00</lastmod>
   </url>
@@ -137,5 +141,11 @@
   </url>
   <url>
     <loc>http://kaineer.info/blog/categories/phantomjs/</loc>
+  </url>
+  <url>
+    <loc>http://kaineer.info/blog/categories/css/</loc>
+  </url>
+  <url>
+    <loc>http://kaineer.info/blog/categories/js/</loc>
   </url>
 </urlset>

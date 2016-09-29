@@ -5,11 +5,13 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>about - Caramel sepulcrum</title>
+  <title>Как сделать css transition только что добавленному элементу - Caramel sepulcrum</title>
   <meta name="author" content="Tangerine Cat">
 
   
-  <meta name="description" content="About 25 янв 2014 10:25 am 25 янв 2014 10:25 am Tweet Comments Please enable JavaScript to view the comments powered by Disqus. Tangerine Cat My &hellip;">
+  <meta name="description" content="Понадобилось сделать плавный переход от одной картинки
+к другой, средствами javascript, как он есть. То есть,
+ни тебе jQuery.animate ни ещё чего- &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +20,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://kaineer.info/about/">
+  <link rel="canonical" href="http://kaineer.info/blog/2016/09/29/opacity-transition/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
    <link href="/stylesheets/data-table.css" media="screen, projection" rel="stylesheet" type="text/css" />
@@ -49,36 +51,128 @@
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">About</h1>
-    <p class="meta">
-
-
-
-
-<time class='entry-date' datetime='2014-01-25T10:25:00+06:00'><span class='date'>25 янв 2014</span> <span class='time'>10:25 am</span></time></p>
-  </header>
-  
-  
-
-  
-    <footer>
+    
+      <h1 class="entry-title">Как сделать Css Transition только что добавленному элементу</h1>
+    
+    
       <p class="meta">
         
-        
 
 
 
 
-<time class='entry-date' datetime='2014-01-25T10:25:00+06:00'><span class='date'>25 янв 2014</span> <span class='time'>10:25 am</span></time>
+<time class='entry-date' datetime='2016-09-29T09:31:00+05:00'><span class='date'>29 сен 2016</span> <span class='time'>9:31 am</span></time>
         
       </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Понадобилось сделать плавный переход от одной картинки
+к другой, средствами javascript, как он есть. То есть,
+ни тебе jQuery.animate ни ещё чего-нибудь.</p>
+
+<p>Сразу подумалось: &ldquo;Есть же css-transition, круто!&rdquo;
+Быстренько накидал стиль:</p>
+
+<figure class='code'><figcaption><span>main.css </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nc">.image</span> <span class="nt">img</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">opacity</span><span class="o">:</span> <span class="m">0</span><span class="p">;</span>
+</span><span class='line'>  <span class="n">transition</span><span class="o">:</span> <span class="k">opacity</span> <span class="m">.5s</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nc">.image</span> <span class="nt">img</span><span class="nc">.fade-in</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">opacity</span><span class="o">:</span> <span class="m">1</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>потом, в скрипте</p>
+
+<figure class='code'><figcaption><span>script.js </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">var</span> <span class="nx">$div</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;.image&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">$image</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;img&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="nx">$image</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="s1">&#39;https://placekitten.com/400/300&#39;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">$div</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">$image</span><span class="p">);</span>
+</span><span class='line'><span class="nx">$image</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s1">&#39;fade-in&#39;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Казалось бы, мы добавили <code>img</code> на страницу,
+потом добавили класс <code>fade-in</code>, прозрачность
+должна плавно измениться, правда?</p>
+
+<p>Нет, к сожалению, не правда.</p>
+
+<p>Чтобы прозрачность всё-таки начала изменяться,
+необходимо (и, вроде бы, достаточно) сделать так:</p>
+
+<figure class='code'><figcaption><span>script-with-timeout.js </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">$div</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">$image</span><span class="p">);</span>
+</span><span class='line'><span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">$image</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s1">&#39;fade-in&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="p">},</span> <span class="mi">0</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>За время между срабатыванием основного кода
+и запуском анонимной функции броузер успевает принять
+картинку, как добавленную и уже после этого добавление
+класса приводит к изменению прозрачности.</p>
+
+<p>Тестовая страничка на <a href="http://codepen.io/kaineer/full/jrwjoj/">codepen</a>.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
       
-        <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://kaineer.info/about/index.html" data-via="kaineer" data-counturl="http://kaineer.info/about/index.html" >Tweet</a>
+
+<span class="byline author vcard"><span class="fn">Tangerine Cat</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2016-09-29T09:31:00+05:00'><span class='date'>29 сен 2016</span> <span class='time'>9:31 am</span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/css/'>css</a>, <a class='category' href='/blog/categories/js/'>js</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://kaineer.info/blog/2016/09/29/opacity-transition/" data-via="kaineer" data-counturl="http://kaineer.info/blog/2016/09/29/opacity-transition/" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -86,9 +180,14 @@
   
 </div>
 
+    
+    <p class="meta">
       
-    </footer>
-  
+        <a class="basic-alignment left" href="/blog/2016/09/21/phantomjs/" title="Previous Post: Phantomjs и бандлы">&laquo; Phantomjs и бандлы</a>
+      
+      
+    </p>
+  </footer>
 </article>
 
   <section>
@@ -249,8 +348,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://kaineer.info/about/index.html';
-        var disqus_url = 'http://kaineer.info/about/index.html';
+        var disqus_identifier = 'http://kaineer.info/blog/2016/09/29/opacity-transition/';
+        var disqus_url = 'http://kaineer.info/blog/2016/09/29/opacity-transition/';
         var disqus_script = 'embed.js';
       
     (function () {

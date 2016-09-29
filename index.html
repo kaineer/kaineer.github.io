@@ -9,9 +9,9 @@
   <meta name="author" content="Tangerine Cat">
 
   
-  <meta name="description" content="В процессе написания библиотеки, которая должна была упрятать
-в себя проверки свойств различных DOM-узлов html-дерева
-внутрь простенького DSL (три &hellip;">
+  <meta name="description" content="Понадобилось сделать плавный переход от одной картинки
+к другой, средствами javascript, как он есть. То есть,
+ни тебе jQuery.animate ни ещё чего- &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -52,6 +52,106 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2016/09/29/opacity-transition/">Как сделать Css Transition только что добавленному элементу</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-09-29T09:31:00+05:00'><span class='date'>29 сен 2016</span> <span class='time'>9:31 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Понадобилось сделать плавный переход от одной картинки
+к другой, средствами javascript, как он есть. То есть,
+ни тебе jQuery.animate ни ещё чего-нибудь.</p>
+
+<p>Сразу подумалось: &ldquo;Есть же css-transition, круто!&rdquo;
+Быстренько накидал стиль:</p>
+
+<figure class='code'><figcaption><span>main.css </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nc">.image</span> <span class="nt">img</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">opacity</span><span class="o">:</span> <span class="m">0</span><span class="p">;</span>
+</span><span class='line'>  <span class="n">transition</span><span class="o">:</span> <span class="k">opacity</span> <span class="m">.5s</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nc">.image</span> <span class="nt">img</span><span class="nc">.fade-in</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">opacity</span><span class="o">:</span> <span class="m">1</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>потом, в скрипте</p>
+
+<figure class='code'><figcaption><span>script.js </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">var</span> <span class="nx">$div</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;.image&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">$image</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;img&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="nx">$image</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="s1">&#39;https://placekitten.com/400/300&#39;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">$div</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">$image</span><span class="p">);</span>
+</span><span class='line'><span class="nx">$image</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s1">&#39;fade-in&#39;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Казалось бы, мы добавили <code>img</code> на страницу,
+потом добавили класс <code>fade-in</code>, прозрачность
+должна плавно измениться, правда?</p>
+
+<p>Нет, к сожалению, не правда.</p>
+
+<p>Чтобы прозрачность всё-таки начала изменяться,
+необходимо (и, вроде бы, достаточно) сделать так:</p>
+
+<figure class='code'><figcaption><span>script-with-timeout.js </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">$div</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">$image</span><span class="p">);</span>
+</span><span class='line'><span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">$image</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s1">&#39;fade-in&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="p">},</span> <span class="mi">0</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>За время между срабатыванием основного кода
+и запуском анонимной функции броузер успевает принять
+картинку, как добавленную и уже после этого добавление
+класса приводит к изменению прозрачности.</p>
+
+<p>Тестовая страничка на <a href="http://codepen.io/kaineer/full/jrwjoj/">codepen</a>.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -294,69 +394,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/04/07/emacs-bits/">Emacs. Каждый день что-нибудь новое</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-04-07T10:56:00+05:00'><span class='date'>07 апр 2015</span> <span class='time'>10:56 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Сегодняшние герои - <code>projectile</code> и комбинация <code>C-h</code>.</p>
-
-<p>Часто, начиная поиск в <code>projectile</code> при помощи <code>C-c p f</code> мне приходилось натыкаться
-на кучу хлама из каталогов <code>tmp</code>, <code>log</code>, не говоря уже про содержимое каталога
-контроля версий. Брр. Но чтение документации, даже изредка, приносит свои плоды.
-А именно, открываем файл <code>$PROJECT_ROOT/.projectile</code>, добавляем</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>+/app
-</span><span class='line'>+/lib
-</span><span class='line'>+/spec
-</span><span class='line'>-/log
-</span><span class='line'>-/tmp
-</span><span class='line'>-/.hg
-</span><span class='line'>-.*</span></code></pre></td></tr></table></div></figure>
-
-
-<p>и ищем нужные файлы быстро и без головной боли.</p>
-
-<p>Второе. Комбинация <code>C-h</code> сама по себе вызывает подсказку. Разнообразную, какую только
-можно себе представить. Но, предположим, нам нужна подсказка по горячим клавишам
-<code>projectile</code> или <code>perspective</code>. Лезть в документацию, выходя из Emacs? Нееет, можно
-обойтись и без этого.</p>
-
-<p>Например. Стандартный префикс команд в <code>projectile</code> - <code>C-c p</code>. Добавляем к нему <code>C-h</code> и - оп!
-Получаем полный список команд <code>projectile</code>, вызываемых с клавиатуры.</p>
-
-<p>Но моё удовольствие и удивление были бы неполными, если бы точно так же, нажав <code>C-x x C-h</code>
-я бы не получил списка команд <code>perspective</code>. И в <code>yasnippet</code> та же история: <code>C-c &amp; C-h</code>.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/2">« Раньше</a>
@@ -472,6 +509,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2016/09/29/opacity-transition/">Как сделать css transition только что добавленному элементу</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2016/09/21/phantomjs/">Phantomjs и бандлы</a>
       </li>
     
@@ -485,10 +526,6 @@
     
       <li class="post">
         <a href="/blog/2015/04/09/localhost-aliases/">Алиасы для localhost</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/04/07/emacs-bits/">Emacs. Каждый день что-нибудь новое</a>
       </li>
     
   </ul>

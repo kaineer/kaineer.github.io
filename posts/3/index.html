@@ -9,8 +9,8 @@
   <meta name="author" content="Tangerine Cat">
 
   
-  <meta name="description" content="Всё портится, даже в том случае, если что-то становится лучше.
-Вот, например, ActiveAdmin - удобная штука для тех, кому лень писать собственную &hellip;">
+  <meta name="description" content="ActiveAdmin 0.5.0 Обновление, которое пока что можно игнорировать.
+Если, конечно, вас не забрасывает письмами cron. Парочка волшебных слов, связанных &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -51,6 +51,64 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/09/13/last-week/">Линки и открытия прошлой недели</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2012-09-13T15:51:00+06:00'><span class='date'>13 сен 2012</span> <span class='time'>3:51 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>ActiveAdmin 0.5.0</h3>
+
+<p><a href="http://reverbhq.com/blog/2012/08/activeadmin-0-5-0-is-released/">Обновление</a>, которое пока что можно игнорировать.
+Если, конечно, вас не забрасывает письмами <code>cron</code>.</p>
+
+<p>Парочка волшебных слов, связанных с этой темой: <a href="http://blog.agile-pandas.com/2011/07/06/activeadmin-beyond-the-basics"><code>table_for</code></a>
+и <a href="http://activeadmin.info/docs/9-batch-actions.html"><code>selectable_column</code></a>.</p>
+
+<p><code>table_for</code> помогает оформить таблицу, которую придётся рендерить там, где раньше использовался класс <code>Dashboard</code>,
+а <code>selectable_column</code> используется, если нужно добавить в <code>index</code> колонку, по которой можно будет выбрать
+несколько элементов для последующего, например, удаления.</p>
+
+<h3>jQuery 1.8.1 и Backbone 0.9.2</h3>
+
+<p>Внезапный выход gem-а, содержащего jQuery 1.8.1 доставил мне минут десять неприятных ощущений, а-ля &ldquo;я всё сломал!&rdquo;</p>
+
+<p>Что характерно, jQuery 1.8.1 и Backbone работают отлично, если брать 0.9.2 из репозитария. Но версия в соответствующем
+gem-е заметно отличается от содержимого репозитария. Как результат &ndash; события вьюхи банально не вызывали обработчики.
+Учитывая, что репозитарий <code>rails-backbone</code> не обновлялся с апреля 2012 года, выход видится только один &ndash; зажать версию
+<code>jquery-rails</code> на 2.1.1 и читать новости &ndash; вот выйдет версия Backbone 0.9.3, например, сделают для него отдельную
+версию gem-а и всё заработает ;)</p>
+
+<h3>cdnjs и jsfiddle</h3>
+
+<p>Про <a href="http://cdnjs.com">cdnjs</a> я действительно узнал совсем недавно.
+Возможность в любой момент вытянуть жаваскриптовую библиотеку из одного места,
+не залезая в Google может пригодиться. Особенно если просядет Google :)</p>
+
+<p>JsFiddle, скорее, наоборот - огорчил. Не знаю, был это глюк или реально заложенное ограничение,
+но в результат попадали только две жаваскриптовые библиотеки из назначенных.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -200,43 +258,9 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/08/08/">Оно работает! Но, блин, как..</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2011-08-08T16:52:00+06:00'><span class='date'>08 авг 2011</span> <span class='time'>4:52 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>На днях исправлял чудесный, феерический баг в коде, уже успевшем стать древним (просто потому, что мой склероз прогрессирует заметно быстрее,
-чем я пишу код). Вкратце, берётся инпут, обвешивается несколькими способами обработчиками, после чего в инпут вводится значение и..
-и обработчики не работают!</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2011/08/08/">Читать »</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
+    
+      <a class="prev" href="/posts/4">« Раньше</a>
     
     <a href="/blog/archives/"> Все статьи </a>
     
@@ -351,6 +375,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2016/09/29/opacity-transition/">Как сделать css transition только что добавленному элементу</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2016/09/21/phantomjs/">Phantomjs и бандлы</a>
       </li>
     
@@ -364,10 +392,6 @@
     
       <li class="post">
         <a href="/blog/2015/04/09/localhost-aliases/">Алиасы для localhost</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/04/07/emacs-bits/">Emacs. Каждый день что-нибудь новое</a>
       </li>
     
   </ul>
